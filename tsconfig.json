@@ -1,7 +1,11 @@
 {
-  "exclude": [
-    "packages/*/lib*"
-  ],
+  "files": [],
   "references": [
+    {
+      "path": "packages/sort-configs/tsconfig.lib.json"
+    },
+    {
+      "path": "packages/sort-configs-typescript/tsconfig.lib.json"
+    }
   ]
 }
