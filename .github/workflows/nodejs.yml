@@ -17,7 +17,6 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: cache yarn global cache
-        if: runner.os != 'macos-latest'
         uses: actions/cache@v1
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
@@ -39,19 +38,14 @@ jobs:
         with:
           name: lib
           path: lib
-      - name: upload libm folder
-        uses: actions/upload-artifact@v1
-        with:
-          name: libm
-          path: libm
   test:
     runs-on: ${{ matrix.os }}
     needs: build
     strategy:
       matrix:
-        os: ['ubuntu-latest']
-        # os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        node-version: [8, 10, 12]
+        # os: ['ubuntu-latest']
+        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+        node-version: [10, 12, 14]
     steps:
       - uses: actions/checkout@v1
         with:
@@ -85,7 +79,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: codacy
         if: matrix.node-version == 12 && matrix.os == 'ubuntu-latest'
-        run: yarn codacy
+        run: cat coverage/lcov.info | yarn codacy-coverage
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
   release:
@@ -96,7 +90,16 @@ jobs:
       - build
       - test
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        # with:
+        #   ref: master
+      - name: Git Identity
+        run: |
+          git config --global user.name 'unional'
+          git config --global user.email 'homawong@gmail.com'
+          git remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: setup yarn-cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -107,21 +110,23 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: download lib folder
-        uses: actions/download-artifact@v1
-        with:
-          name: lib
-      - name: download libm folder
-        uses: actions/download-artifact@v1
-        with:
-          name: libm
       - name: cache node_modules
         uses: actions/cache@v1
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-      - run: yarn semantic-release
+      - run: yarn build
+      - name: Authenticate with Registry
+        run: |
+            yarn logout
+            echo "registry=http://registry.npmjs.org/" >> .npmrc
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+            npm whoami
         env:
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn lerna publish --yes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
