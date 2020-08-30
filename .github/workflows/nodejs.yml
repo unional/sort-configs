@@ -3,14 +3,13 @@ on:
   push:
     branches:
       - master
-      - "greenkeeper/*"
   pull_request:
     types: [opened, synchronize]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - name: setup yarn-cache
@@ -33,11 +32,6 @@ jobs:
       - run: yarn lint
       - run: yarn build
       - run: yarn depcheck
-      - name: upload lib folder
-        uses: actions/upload-artifact@v1
-        with:
-          name: lib
-          path: lib
   test:
     runs-on: ${{ matrix.os }}
     needs: build
@@ -47,7 +41,7 @@ jobs:
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
         node-version: [10, 12, 14]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - name: setup yarn-cache
@@ -71,14 +65,19 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-      - run: yarn coverage --maxWorkers=2
+      - name: test
+        if: matrix.node-version != 14 || matrix.os != 'ubuntu-latest'
+        run: yarn test
+      - name: coverage
+        if: matrix.node-version == 14 && matrix.os == 'ubuntu-latest'
+        run: yarn coverage
       - name: codecov
-        if: matrix.node-version == 12 && matrix.os == 'ubuntu-latest'
+        if: matrix.node-version == 14 && matrix.os == 'ubuntu-latest'
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: codacy
-        if: matrix.node-version == 12 && matrix.os == 'ubuntu-latest'
+        if: matrix.node-version == 14 && matrix.os == 'ubuntu-latest'
         run: cat coverage/lcov.info | yarn codacy-coverage
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
