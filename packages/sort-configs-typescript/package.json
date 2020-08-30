@@ -1,0 +1,33 @@
+{
+  "name": "sort-configs-typescript",
+  "version": "0.0.0",
+  "description": "sort various configurations",
+  "homepage": "https://github.com/unional/sort-configs/tree/master/packages/sort-configs-typescript",
+  "bugs": {
+    "url": "https://github.com/unional/sort-configs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unional/sort-configs.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Homa Wong",
+    "email": "homawong@gmail.com"
+  },
+  "type": "commonjs",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "clean": "rimraf lib .ts",
+    "depcheck": "dependency-check . --unused --no-dev && dependency-check . --missing --no-dev"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">= 14"
+  }
+}

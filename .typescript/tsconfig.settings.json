@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "es2017"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noUnusedLocals": true,
+    "removeComments": false,
+    "rootDir": ".nowhere",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2017"
+  }
+}
