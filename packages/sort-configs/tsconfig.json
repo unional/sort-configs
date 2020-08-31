@@ -1,6 +1,7 @@
 {
   "extends": "../../.typescript/tsconfig.setting.json",
   "compilerOptions": {
+    "resolveJsonModule": true,
     "rootDir": "src"
   },
   "references": [],

@@ -12,11 +12,11 @@
     "depcheck": "lerna run depcheck",
     "lint": "eslint --ext=js,jsx,ts,tsx .",
     "nuke": "yarn clean && lerna run clean && rimraf node_modules",
+    "sort-configs": "node ./packages/sort-configs/lib/bin.js",
     "test": "jest --maxworkers=60%",
     "test:watch": "yarn test --watch",
     "verify": "yarn lint && yarn build && yarn depcheck && yarn coverage",
-    "watch": "yarn test:watch",
-    "semantic-release": "semantic-release"
+    "watch": "yarn test:watch"
   },
   "husky": {
     "hooks": {
@@ -52,8 +52,7 @@
     "lerna": "^3.22.1",
     "npm-check-updates": "^8.0.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.0.2",
-    "semantic-release": "^17.1.1"
+    "typescript": "^4.0.2"
   },
   "version": "0.0.0-development",
   "repository": {
