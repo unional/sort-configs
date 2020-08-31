@@ -46,7 +46,7 @@ packages/package-b/tsconfig.json is sorted!
 ```
 
 You can use also detect supported configs automatically:
-`sort-configs --detect [...dirs]`
+`sort-configs --detect [...globs]`
 
 ```sh
 $ sort-configs --detect
