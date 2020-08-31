@@ -8,22 +8,67 @@
 [![Codacy Grade Badge][codacy-grade]][codacy-grade-url]
 [![Codacy Coverage Badge][codacy-coverage]][codacy-coverage-url]
 
-[![semantic-release][semantic-release-image]][semantic-release-url]
-
 [![Visual Studio Code][vscode-image]][vscode-url]
 
-This is the repository for [`sort-configs`](https://github.com/unional/sort-configs).
+[`sort-configs`](https://github.com/unional/sort-configs) helps you to sort all kinds of configuration files.
 
-## Packages
+## Install
 
-- [sort-configs](https://github.com/unional/sort-configs/tree/master/packages/sort-configs): main sorter.
+```sh
+npm install --global sort-configs
+yarn add --global sort-configs
+```
+
+## Usage
+
+By default, `sort-configs` will sort config files under the current directory.
+
+```sh
+$ sort-configs
+.eslintrc is sorted!
+package.json is sorted!
+tsconfig.json is sorted!
+```
+
+You can also specify specific files using globs:
+`sort-configs [...globs]`
+
+```sh
+$ sort-configs "packages/*/package.json"
+packages/package-a/package.json is sorted!
+packages/package-b/package.json is sorted!
+
+$ sort-configs "packages/*/*"
+packages/package-a/package.json is sorted!
+packages/package-a/tsconfig.json is sorted!
+packages/package-b/package.json is sorted!
+packages/package-b/tsconfig.json is sorted!
+```
+
+You can use also detect supported configs automatically:
+`sort-configs --detect [...dirs]`
+
+```sh
+$ sort-configs --detect
+found sortable configs:
+  .eslintrc (sort-configs-eslint installed)
+  .yarnrc (sort-configs-yarn installed)
+  babel.config.json (sort-configs-babel)
+  package.json (sort-configs-npm installed)
+  pretter.json (sort-configs-prettier)
+  tsconfig.json (sort-configs-typescript installed)
+  packages/package-a/package.json (sort-configs-npm installed)
+do you want to install the missing plugins (All/yes/no)?
+  sort-configs-babel (Y/n)?
+  sort-configs-prettier (Y/n)?
+```
 
 [npm-image]: https://img.shields.io/npm/v/sort-configs.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/sort-configs
 [downloads-image]: https://img.shields.io/npm/dm/sort-configs.svg?style=flat
 [downloads-url]: https://npmjs.org/package/sort-configs
 
-[github-nodejs]: https://github.com/unional/sort-configs/workflows/Node%20CI/badge.svg
+[github-nodejs]: https://github.com/unional/sort-configs/workflows/nodejs/badge.svg
 [github-action-url]: https://github.com/unional/sort-configs/actions
 [codecov-image]: https://codecov.io/gh/unional/sort-configs/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/unional/sort-configs
