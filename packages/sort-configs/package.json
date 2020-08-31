@@ -28,6 +28,6 @@
   "dependencies": {
   },
   "engines": {
-    "node": ">= 14"
+    "node": ">=10"
   }
 }

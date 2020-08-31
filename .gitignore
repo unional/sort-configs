@@ -43,6 +43,6 @@ node_modules
 .idea
 
 # project folders
-.typescript/*.buildinfo
+*.tsbuildinfo
 lib*
 libm*
