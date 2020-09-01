@@ -3,6 +3,8 @@ import { Context } from './types'
 
 export async function searchForPlugins({ ui }: Context) {
   ui.info(`Search for available plugins...`)
-  const pluginNames = await searchByKeywords(['sort-configs'])
+  const pluginNames = await searchForPlugins.searchByKeywords(['sort-configs'])
   return pluginNames
 }
+
+searchForPlugins.searchByKeywords = searchByKeywords

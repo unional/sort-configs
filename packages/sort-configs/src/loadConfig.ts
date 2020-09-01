@@ -1,5 +1,5 @@
-import { resolve } from 'path'
 import { readFileSync } from 'fs'
+import { resolve } from 'path'
 
 /**
  * Load configuration from `sort-config.json`
@@ -9,5 +9,5 @@ export function loadConfig(cwd?: string) {
     cwd = process.cwd()
   }
 
-  return JSON.parse(readFileSync(resolve(cwd, 'sort-config.json'), 'utf-8'))
+  return JSON.parse(readFileSync(resolve(cwd, 'sort-configs.json'), 'utf-8'))
 }
