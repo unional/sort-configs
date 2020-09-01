@@ -1,5 +1,14 @@
 import { LogPresenter, PromptPresenter } from 'clibuilder'
 
 export type Context = {
-  ui: LogPresenter & PromptPresenter
+  ui: UI
+}
+
+export type UI = LogPresenter & PromptPresenter
+
+export type PluginPackageJson = {
+  name: string,
+  'sort-configs': {
+    patterns: string[]
+  }
 }

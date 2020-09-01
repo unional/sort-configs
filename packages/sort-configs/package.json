@@ -29,7 +29,11 @@
     "depcheck": "dependency-check . --unused --no-dev && dependency-check . --missing --no-dev"
   },
   "dependencies": {
-    "clibuilder": "^6.4.2"
+    "clibuilder": "^6.4.2",
+    "find-installed-packages": "^2.1.6",
+    "glob": "^7.1.6",
+    "search-packages": "^2.0.0",
+    "update-notifier": "^4.1.1"
   },
   "engines": {
     "node": ">=10"

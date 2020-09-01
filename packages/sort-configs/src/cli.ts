@@ -2,11 +2,15 @@ import { createCli } from 'clibuilder'
 import { detectConfigs } from './detectConfigs'
 import { sortConfigs } from './sortConfigs'
 import { pkg } from './pkg'
+import { getFileGlobs } from './getFileGlobs'
 
 export const cli = createCli({
   name: 'sort-configs',
   description: 'Sort various configurations with opinion',
   version: pkg.version,
+  config: {
+    include: null as string[] | null
+  },
   arguments: [{
     name: 'globs',
     description: 'multiple file globs',
@@ -19,12 +23,13 @@ export const cli = createCli({
       }
     }
   },
-  run(args) {
+  async run(args) {
+    const globs = getFileGlobs(this.config, args.globs as any)
     if (args.detect) {
-      detectConfigs(this, args.globs as any)
+      detectConfigs({ ui: this.ui }, globs)
     }
     else {
-      sortConfigs(this, args.globs as any)
+      sortConfigs({ ui: this.ui }, globs)
     }
   }
 })
