@@ -10,7 +10,7 @@
 
 [![Visual Studio Code][vscode-image]][vscode-url]
 
-[`sort-configs`](https://github.com/unional/sort-configs) helps you to sort all kinds of configuration files.
+[`sort-configs`](https://github.com/cyberuni/sort-configs) helps you to sort all kinds of configuration files.
 
 ## Install
 
@@ -68,14 +68,14 @@ do you want to install the missing plugins (All/yes/no)?
 [downloads-image]: https://img.shields.io/npm/dm/sort-configs.svg?style=flat
 [downloads-url]: https://npmjs.org/package/sort-configs
 
-[github-nodejs]: https://github.com/unional/sort-configs/workflows/nodejs/badge.svg
-[github-action-url]: https://github.com/unional/sort-configs/actions
-[codecov-image]: https://codecov.io/gh/unional/sort-configs/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/unional/sort-configs
+[github-nodejs]: https://github.com/cyberuni/sort-configs/actions/workflows/release.yml/badge.svg
+[github-action-url]: https://github.com/cyberuni/sort-configs/actions
+[codecov-image]: https://codecov.io/gh/cyberuni/sort-configs/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/cyberuni/sort-configs
 [codacy-grade]: https://api.codacy.com/project/badge/Grade/707f89609508442486050d207ec5bd78
-[codacy-grade-url]: https://www.codacy.com/app/homawong/sort-configs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=unional/sort-configs&amp;utm_campaign=Badge_Grade
+[codacy-grade-url]: https://www.codacy.com/app/homawong/sort-configs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cyberuni/sort-configs&amp;utm_campaign=Badge_Grade
 [codacy-coverage]: https://api.codacy.com/project/badge/Coverage/707f89609508442486050d207ec5bd78
-[codacy-coverage-url]: https://www.codacy.com/manual/homawong/sort-configs?utm_source=github.com&utm_medium=referral&utm_content=unional/sort-configs&utm_campaign=Badge_Coverage
+[codacy-coverage-url]: https://www.codacy.com/manual/homawong/sort-configs?utm_source=github.com&utm_medium=referral&utm_content=cyberuni/sort-configs&utm_campaign=Badge_Coverage
 
 [vscode-image]: https://img.shields.io/badge/vscode-ready-green.svg
 [vscode-url]: https://code.visualstudio.com/
