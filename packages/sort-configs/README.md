@@ -1,6 +1,6 @@
 # sort-configs
 
-[`sort-configs`](https://github.com/unional/sort-configs) sorts all kinds of configuration files.
+[`sort-configs`](https://github.com/cyberuni/sort-configs) sorts all kinds of configuration files.
 
 ```sh
 $ sort-configs

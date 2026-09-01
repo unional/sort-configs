@@ -1,63 +1,47 @@
 {
   "name": "root",
+  "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "description": "sort various configurations",
+  "homepage": "https://github.com/cyberuni/sort-configs",
+  "bugs": {
+    "url": "https://github.com/cyberuni/sort-configs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberuni/sort-configs.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Homa Wong",
+    "email": "homawong@gmail.com"
+  },
   "scripts": {
     "build": "tsc -b",
     "build:watch": "tsc -b -w",
-    "clean": "lerna run clean",
-    "coverage": "yarn test --coverage",
-    "depcheck": "lerna run depcheck",
-    "lint": "eslint --ext=js,jsx,ts,tsx .",
-    "nuke": "yarn clean && lerna run clean && rimraf node_modules",
-    "test": "jest --maxworkers=60%",
-    "test:watch": "yarn test --watch",
-    "verify": "yarn lint && yarn build && yarn depcheck && yarn coverage",
-    "watch": "yarn test:watch",
-    "semantic-release": "semantic-release"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "clean": "rimraf \"packages/*/lib\" \"packages/*/*.tsbuildinfo\" coverage",
+    "coverage": "jest --coverage",
+    "cs": "changeset",
+    "lint": "biome check",
+    "nuke": "pnpm clean && rimraf node_modules \"packages/*/node_modules\"",
+    "release": "changeset publish",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "verify": "pnpm lint && pnpm build && pnpm coverage",
+    "version": "changeset version",
+    "watch": "pnpm test:watch"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.10.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-typescript": "^7.10.4",
-    "@changesets/cli": "^2.10.2",
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.2",
-    "@types/jest": "^26.0.10",
-    "@types/update-notifier": "^4.1.1",
-    "assertron": "^7.1.3",
-    "babel-jest": "^26.3.0",
-    "codacy-coverage": "^3.4.0",
-    "commitlint-circle": "^1.0.0",
-    "dependency-check": "^4.1.0",
-    "eslint": "^7.7.0",
-    "eslint-plugin-harmony": "^3.0.1",
-    "husky": "^4.2.5",
-    "jest": "^26.4.2",
-    "jest-audio-reporter": "^2.2.1",
-    "jest-progress-tracker": "^2.0.2",
-    "jest-watch-repeat": "^2.0.0",
-    "jest-watch-suspend": "^1.1.2",
-    "jest-watch-toggle-config": "^2.0.1",
-    "jest-watch-typeahead": "^0.6.0",
-    "lerna": "^3.22.1",
-    "npm-check-updates": "^8.0.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.0.2",
-    "semantic-release": "^17.1.1"
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-typescript": "^7.27.1",
+    "@biomejs/biome": "^2.5.11",
+    "@changesets/cli": "^3.0.1",
+    "@types/jest": "^30.0.0",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.3"
   },
-  "version": "0.0.0-development",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/unional/sort-configs.git"
-  }
+  "packageManager": "pnpm@11.24.0"
 }
