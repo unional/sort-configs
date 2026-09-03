@@ -2,13 +2,13 @@
   "name": "sort-configs-typescript",
   "version": "0.0.2",
   "description": "sort various configurations",
-  "homepage": "https://github.com/cyberuni/sort-configs",
+  "homepage": "https://github.com/repobuddy/sort-configs",
   "bugs": {
-    "url": "https://github.com/cyberuni/sort-configs/issues"
+    "url": "https://github.com/repobuddy/sort-configs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyberuni/sort-configs.git",
+    "url": "https://github.com/repobuddy/sort-configs.git",
     "directory": "packages/sort-configs-typescript"
   },
   "license": "MIT",
